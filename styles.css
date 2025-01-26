@@ -1,0 +1,109 @@
+body {
+    background-color: rgb(246, 247, 220);
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#h1 {
+    color: rgb(92, 98, 124);
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+
+.th, td {
+    border: 1px solid black;
+    padding: 20px;
+    background-color: rgb(203, 211, 248);
+    color: black;
+    font-size: 1.5em;
+}
+
+.tr{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.btn {
+    background-color: rgb(92, 98, 124);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 100px; 
+}
+
+#btnTable {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 1em;
+    margin-right: 20px;
+}
+
+.tableContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#table1 {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    #h1 {
+        font-size: 1.8em;
+    }
+
+    .th, td {
+        font-size: 1.2em;
+        padding: 10px;
+    }
+
+    #table1 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #btnTable {
+        margin: 0;
+        align-items: center; /* Center buttons on small screens */
+    }
+
+    .btn {
+        width: 100%; /* Buttons take full width on mobile */
+    }
+}
+
+/* Media Query for very small screens */
+@media screen and (max-width: 480px) {
+    #h1 {
+        font-size: 1.5em;
+    }
+
+    .th, td {
+        font-size: 1em;
+        padding: 8px;
+    }
+}
