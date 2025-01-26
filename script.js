@@ -13,65 +13,24 @@ document.addEventListener("DOMContentLoaded", function () {
         if (table1) {
             const newRow = table1.insertRow();
 
-            const cel1 = newRow.insertCell(0);
-            cel1.contentEditable = "true";
-            cel1.textContent = "Click to Edit";
-            cel1.onclick = function() {
-                if (cel1.textContent === "Click to Edit") {
-                    cel1.textContent = "";
-                }
-            };
-            const cel2 = newRow.insertCell(1);
-            cel2.contentEditable = "true";
-            cel2.textContent = "Click to Edit";
-            cel2.onclick = function() {
-                if (cel2.textContent === "Click to Edit") {
-                    cel2.textContent = "";
-                }
-            };
-            const cel3 = newRow.insertCell(2);
-            cel3.contentEditable = "true";
-            cel3.textContent = "Click to Edit";
-            cel3.onclick = function() {
-                if (cel3.textContent === "Click to Edit") {
-                    cel3.textContent = "";
-                }
-            };
-            const cel4 = newRow.insertCell(3);
-            cel4.textContent = "0.00";
+            for (let i = 0; i < 3; i++) {
+                const cell = newRow.insertCell(i);
+                cell.contentEditable = "true";
+                cell.textContent = "Click to Edit";
+                cell.onclick = function () {
+                    if (cell.textContent === "Click to Edit") {
+                        cell.textContent = "";
+                    }
+                };
+            }
+            const cumProbCell = newRow.insertCell(3);
+            cumProbCell.textContent = "0.00";
+            const rangeCell = newRow.insertCell(4);
+            rangeCell.textContent = "0 to 0";
 
-            const cel5 = newRow.insertCell(4);
-            cel5.textContent = "0 to 0";
-
-            cel3.addEventListener("input", function () {
-                const userProb = parseFloat(cel3.textContent) || 0;
-
-                if (isNaN(userProb) || userProb < 0) {
-                    cel3.style.backgroundColor = "#ffdddd";
-                    return;
-                } else {
-                    cel3.style.backgroundColor = "";
-                }
-
-
-                computedValue = 0;
-                previousRangeEnd = 0;
-
-                for (let row of table1.rows) {
-                    const probCell = row.cells[2];
-                    const cumProbCell = row.cells[3];
-                    const rangeCell = row.cells[4];
-
-                    const prob = parseFloat(probCell.textContent) || 0;
-                    computedValue += prob;
-
-                    cumProbCell.textContent = computedValue.toFixed(2);
-
-                    const rangeStart = previousRangeEnd;
-                    const rangeEnd = (computedValue * 100) - 1;
-                    rangeCell.textContent = `${rangeStart.toFixed(0)} to ${rangeEnd.toFixed(0)}`;
-                    previousRangeEnd = rangeEnd + 1;
-                }
+            const probCell = newRow.cells[2];
+            probCell.addEventListener("input", function () {
+                updateTable(table1);
             });
         } else {
             console.error("Table body not found.");
@@ -80,52 +39,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnDel.onclick = function () {
         const table1 = document.getElementById("table1").getElementsByTagName("tbody")[0];
-        if (table1) {
-            if (table1.rows.length > 0) {
-                table1.deleteRow(table1.rows.length - 1);
-                computedValue = 0;
-                previousRangeEnd = 0;
-
-                for (let row of table1.rows) {
-                    const probCell = row.cells[2];
-                    const cumProbCell = row.cells[3];
-                    const rangeCell = row.cells[4];
-
-                    const prob = parseFloat(probCell.textContent) || 0;
-                    computedValue += prob;
-
-                    cumProbCell.textContent = computedValue.toFixed(2);
-
-                    const rangeStart = previousRangeEnd;
-                    const rangeEnd = (computedValue * 100) - 1;
-                    rangeCell.textContent = `${rangeStart.toFixed(0)} to ${rangeEnd.toFixed(0)}`;
-                    previousRangeEnd = rangeEnd + 1;
-                }
-            } else {
-                console.error("Table body is empty.");
-            }
+        if (table1 && table1.rows.length > 0) {
+            table1.deleteRow(table1.rows.length - 1);
+            updateTable(table1);
         } else {
-            console.error("Table body not found.");
+            console.error("Table body is empty or not found.");
         }
     };
 
     btnEdit.onclick = function () {
-        
-
-        headerlabel1.contentEditable = "true";
-            headerlabel1.textContent = "Click to Edit";
-            headerlabel1.onclick = function() {
-                if (headerlabel1.textContent === "Click to Edit") {
-                    headerlabel1.textContent = "";
+        [headerlabel1, headerlabel2].forEach((label) => {
+            label.contentEditable = "true";
+            label.textContent = "Click to Edit";
+            label.onclick = function () {
+                if (label.textContent === "Click to Edit") {
+                    label.textContent = "";
                 }
             };
-        
-        headerlabel2.contentEditable = "true";
-            headerlabel2.textContent = "Click to Edit";
-            headerlabel2.onclick = function() {
-                if (headerlabel2.textContent === "Click to Edit") {
-                    headerlabel2.textContent = "";
-                }
-            };
+        });
     };
+
+    function updateTable(table1) {
+        computedValue = 0;
+        previousRangeEnd = 0;
+
+        for (let row of table1.rows) {
+            const probCell = row.cells[2];
+            const cumProbCell = row.cells[3];
+            const rangeCell = row.cells[4];
+
+            let prob = parseFloat(probCell.textContent) || 0;
+
+            if (Number.isInteger(prob) && prob >= 0 && prob <= 100) {
+                prob /= 100;
+            } else {
+                prob = 0;
+            }
+
+            computedValue += prob;
+            cumProbCell.textContent = computedValue.toFixed(2);
+
+            const rangeStart = previousRangeEnd;
+            const rangeEnd = (computedValue * 100) - 1;
+            rangeCell.textContent = `${rangeStart.toFixed(0)} to ${rangeEnd.toFixed(0)}`;
+
+            previousRangeEnd = rangeEnd + 1;
+        }
+    }
 });
