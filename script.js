@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (Number.isInteger(prob) && prob >= 0 && prob <= 100) {
                 prob /= 100;
             } else {
-                prob = 0;
+                cumProbCell.textContent = computedValue.toFixed(2);
             }
 
             computedValue += prob;
