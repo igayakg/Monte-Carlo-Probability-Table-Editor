@@ -7,27 +7,40 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1 id="h1"> Monte Carlo </h1>
-    <div class="tableContainer">
-        <div class="btnContainer">
-            <table id="btnTable">
-                <tr class="tr"><button id="btnAdd" class="btn">Add Row</button></tr><br>
-                <tr class="tr"><button id="btnDel" class="btn">Delete Row</button></tr><br>
-                <tr class="tr"><button id="btnEdit" class="btn">Edit Label</button></tr>
+    <div class="header">
+        <h1 class="title"> Monte Carlo </h1>
+    </div>
+    
+    <div class="grid-container">
+        <div class="button-container">
+            <button class="button js-add-button">Add Row</button>
+            <button class="button js-delete-button">Delete Row</button>
+            <button class="button js-edit-button">Edit Label</button>
+            <div class="hide-col1-container">
+                <label for="auto-calculate">Auto-Calculate</label>
+                <input type="checkbox" id="auto-calculate" class="js-auto-calculate">
+            </div>
+            <div class="hide-col1-container">
+                <label for="hide-col1">Hide Col1</label>
+                <input type="checkbox" id="hide-col1" class="js-hide-col1-checkbox">
+            </div>
+            
+        </div>
+        <div class="table-container">
+            <table id="table1">
+                <thead>
+                    <th class="th"></th>
+                    <th class="th"></th>
+                    <th class="th">Probability</th>
+                    <th class="th">Cumulative Probability</th>
+                    <th class="th">RNI</th>
+                </thead>
+                <tbody>
+                        <!-- THE ADDED ROWS -->
+                </tbody>
             </table>
         </div>
-        <table id="table1">
-            <thead>
-                <th id="label1" class="th"></th>
-                <th id="label2" class="th"></th>
-                <th id="prob" class="th">Probability</th>
-                <th id="comprob" class="th">Cumulative Probability</th>
-                <th id="rni" class="th">RNI</th>
-            </thead>
-            <tbody>
-                    <!-- THE ADDED ROWS -->
-            </tbody>
-        </table>
+        
     </div>
     <script src="index.js"></script>
 </body>
