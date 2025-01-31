@@ -2,9 +2,9 @@ let computedValue = 0;
 let previousRangeEnd = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
-    const btnAdd = document.getElementById("btnAdd");
-    const btnDel = document.getElementById("btnDel");
-    const btnEdit = document.getElementById("btnEdit");
+    const btnAdd = document.querySelector(".js-add-button");
+    const btnDel = document.querySelector(".js-delete-button");
+    const btnEdit = document.querySelector(".js-edit-button");
     const headerlabel1 = document.getElementById("label1");
     const headerlabel2 = document.getElementById("label2");
 
