@@ -14,12 +14,7 @@
     <div class="grid-container">
         <div class="button-container">
             <button class="button js-add-button">Add Row</button>
-            <button class="button js-delete-button">Delete Row</button>
-            <button class="button js-edit-button">Edit Label</button>
-            <div class="hide-col1-container">
-                <label for="auto-calculate">Auto-Calculate</label>
-                <input type="checkbox" id="autoCalculate" class="js-auto-calculate">
-            </div>
+
             <div class="hide-col1-container">
                 <label for="detail">Detail</label>
                 <input type="checkbox" id="detail" class="js-detail-checkbox">
@@ -34,11 +29,31 @@
             <table id="table1">
                 <thead>
                     <th class="th">Detail</th>
-                    <th class="th">Observed Count</th>
-                    <th class="th">% Factor</th>
+                    <th class="th"># Days</th>
+                    <th class="th"># Customers</th>
+                    <th class="th">Del</th>
+                </thead>
+                <tbody class="js-body">
+                        <!-- THE ADDED ROWS -->
+                </tbody>
+            </table>
+        </div>
+        <div class="table-container">
+            <table id="table2">
+                <thead>
                     <th class="th">Probability</th>
-                    <th class="th">Cumulative Probability</th>
+                    <th class="th">Cumulative</th>
                     <th class="th">RNI</th>
+                </thead>
+                <tbody class="js-body">
+                        <!-- THE ADDED ROWS -->
+                </tbody>
+            </table>
+        </div>
+        <div class="table-container">
+            <table id="table3">
+                <thead>
+                    
                     <th class="th">Day</th>
                     <th class="th">Random</th>
                     <th class="th">Customers</th>
@@ -50,6 +65,6 @@
         </div>
         
     </div>
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script> -->
 </body>
 </html>

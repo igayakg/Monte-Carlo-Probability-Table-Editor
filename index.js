@@ -282,3 +282,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+function generateRandomDataOnBody(){
+    console.log("History");
+    let html = `
+        <tr>
+            <td>1</td>
+        </tr>
+    `;
+
+    
+    document.querySelector(".js-body").innerHTML = `${html}`;
+
+}
+
+generateRandomDataOnBody();
