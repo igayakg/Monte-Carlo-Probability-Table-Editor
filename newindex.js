@@ -4,6 +4,8 @@ let table1;
 let day = 1;
 let randomNum = generateRandomNumber();
 let result;
+let customerAve;
+let totalDays;
 
 document.addEventListener("DOMContentLoaded", function () {
     table1 = document.getElementById("table1").getElementsByTagName("tbody")[0];
@@ -12,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnAdd = document.querySelector(".js-add-button"); 
     const btnSimulate = document.querySelector(".js-simulate-button");
     const btnReset = document.querySelector(".js-reset-button");
+    
 
     // Hide the detail header initially
     const detailHeader = tableHead.rows[0].cells[0];
@@ -94,13 +97,17 @@ function simulate() {
         </tr>
     `;
     document.querySelectorAll(".js-body")[2].insertAdjacentHTML('beforeend', boilerplateTable3);
-
     randomNum = generateRandomNumber();
-    console.log(randomNumber);
+
+    customerAve =  Array.from(document.querySelectorAll(".js-body")[2].rows).reduce((sum, row) => {
+        return sum + parseFloat(row.cells[2].textContent);
+    }, 0) / document.querySelectorAll(".js-body")[2].rows.length;
+
+    document.getElementById("customerAve").textContent = customerAve.toFixed(2);
 }
 
 function generateRandomNumber() {
-    return Math.floor(Math.random() * 101);
+    return Math.floor(Math.random() * 100);
 }
 
 function generateRow() {
@@ -170,6 +177,13 @@ function generateRow() {
         cell.addEventListener('blur', function () {
             if (this.innerText.trim() === '') this.innerText = 'Enter Value';
             updateTable();
+            
+            totalDays = Array.from(document.querySelectorAll(".js-body")[0].rows).reduce((sum, row) => {
+                const value = row.cells[1].textContent.trim();
+                return value !== "Enter Value" ? sum + parseFloat(value) : sum;
+            }, 0);
+        
+            console.log(totalDays); /////////////////////////////////////// this is the value of total days!!!!! palagyan nalang logic para maupdate sa front
         });
     });
 
