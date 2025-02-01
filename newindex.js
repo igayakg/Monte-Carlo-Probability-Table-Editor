@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const detail = document.getElementById("detail");
     const btnAdd = document.querySelector(".js-add-button"); 
     const btnSimulate = document.querySelector(".js-simulate-button");
+    const btnReset = document.querySelector(".js-reset-button");
 
     // Hide the detail header initially
     const detailHeader = tableHead.rows[0].cells[0];
@@ -37,10 +38,38 @@ document.addEventListener("DOMContentLoaded", function () {
         generateRow();
     });
 
-    btnSimulate.addEventListener("click", function () {
-        simulate();
+    btnReset.addEventListener("click", function () {
+        document.querySelectorAll(".js-body").forEach(body => {
+            body.innerHTML = "";
+        });
+        day = 1;
+        randomNum = generateRandomNumber();
     });
-    
+
+    btnSimulate.addEventListener("click", function () {
+        const table1Body = document.querySelectorAll(".js-body")[0];
+        let valid = true;
+
+        if (table1Body.rows.length === 0) {
+            valid = false;
+        } else {
+            for (let row of table1Body.rows) {
+            const rateFactorCell = row.querySelector('.rateFactorCell');
+            const customerCell = row.querySelector('.customerCell');
+            const rateFactor = parseFloat(rateFactorCell.textContent);
+            const customer = parseFloat(customerCell.textContent);
+            if (rateFactorCell.textContent.trim() === "Enter Value" || isNaN(rateFactor) || customerCell.textContent.trim() === "Enter Value" || isNaN(customer)) {
+                valid = false;
+                break;
+            }
+            }
+        }
+        if (!valid) {
+            alert("Please enter a valid value for each cell.");
+        } else {
+            simulate();
+        }
+    });
 });
 
 function simulate() {
@@ -79,7 +108,7 @@ function generateRow() {
         <tr>
             <td contenteditable="true" class="editable-label"> Enter Label </td>
             <td contenteditable="true" class="editable-value rateFactorCell"> Enter Value </td>
-            <td contenteditable="true" class="editable-value"> Enter Value </td>
+            <td contenteditable="true" class="editable-value customerCell"> Enter Value </td>
             <td><button class="js-delete-row">X</button></td>
         </tr>
     `;
@@ -104,6 +133,14 @@ function generateRow() {
             document.querySelectorAll(".js-body")[1].children[rowIndex].remove();
             updateTable();
         });
+    });
+
+    // Clear the whole table3 (js-body2) if this is clicked
+    document.querySelectorAll('.js-delete-row').forEach(button => {
+        button.addEventListener('click', function () {
+            document.querySelectorAll(".js-body")[2].innerHTML = "";
+        });
+    day = 1;
     });
 
     // Hide or show the detail column based on the detail checkbox state
