@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            
+
             //////////////////////////////////////
             /* if detail is checked, show the detail column
                 else hide it */
@@ -236,49 +236,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function for updating the probability values, cumu prob, and rni when autoCalculate is checked
     function updateProbability(table1) {
-        if (autoCalculate.checked) {
-            let totalRateFactor = 0;
-            
-            // Calculate the total rate factor
-            for (let row of table1.rows) {
-                const rateFactorCell = row.cells[2];
-                const rateFactor = parseFloat(rateFactorCell.textContent) || 0;
-                totalRateFactor += rateFactor;
+        let totalRateFactor = 0;
+        
+        // Calculate the total rate factor
+        for (let row of table1.rows) {
+            const rateFactorCell = row.cells[2];
+            const rateFactor = parseFloat(rateFactorCell.textContent) || 0;
+            totalRateFactor += rateFactor;
+        }
+
+        computedValue = 0;
+        previousRangeEnd = 0;
+        // Update each probability cell based on the rate factor
+        for (let row of table1.rows) {
+            const rateFactorCell = row.cells[2];
+            const probCell = row.cells[3];
+            const cumProbCell = row.cells[4];
+            const rangeCell = row.cells[5];
+            const rateFactor = parseFloat(rateFactorCell.textContent) || 0;
+            const probability = totalRateFactor ? (rateFactor / totalRateFactor) : 0;
+
+            probCell.textContent = probability.toFixed(4);
+
+            let prob = parseFloat(probCell.textContent) || 0;
+
+            if (Number.isInteger(prob) && prob >= 0 && prob <= 100) {
+                prob /= 100;
+            } else {
+                cumProbCell.textContent = computedValue.toFixed(3);
             }
 
-            computedValue = 0;
-            previousRangeEnd = 0;
-            // Update each probability cell based on the rate factor
-            for (let row of table1.rows) {
-                const rateFactorCell = row.cells[2];
-                const probCell = row.cells[3];
-                const cumProbCell = row.cells[4];
-                const rangeCell = row.cells[5];
-                const rateFactor = parseFloat(rateFactorCell.textContent) || 0;
-                const probability = totalRateFactor ? (rateFactor / totalRateFactor) : 0;
+            computedValue += prob;
+            cumProbCell.textContent = computedValue.toFixed(4);
 
-                probCell.textContent = probability.toFixed(4);
+            const rangeStart = previousRangeEnd;
+            const rangeEnd = (computedValue * 100) - 1;
+            rangeCell.textContent = `${rangeStart.toFixed(0)} to ${rangeEnd.toFixed(0)}`;
 
-                let prob = parseFloat(probCell.textContent) || 0;
-
-                if (Number.isInteger(prob) && prob >= 0 && prob <= 100) {
-                    prob /= 100;
-                } else {
-                    cumProbCell.textContent = computedValue.toFixed(3);
-                }
-
-                computedValue += prob;
-                cumProbCell.textContent = computedValue.toFixed(4);
-
-                const rangeStart = previousRangeEnd;
-                const rangeEnd = (computedValue * 100) - 1;
-                rangeCell.textContent = `${rangeStart.toFixed(0)} to ${rangeEnd.toFixed(0)}`;
-
-                previousRangeEnd = rangeEnd + 1;
-            }
-
-            // Update the table to see auto-calculated probabilities
-            updateTable(table1);
+            previousRangeEnd = rangeEnd + 1;
         }
     }
 });
