@@ -194,8 +194,7 @@ function generateRow() {
                 const value = row.cells[1].textContent.trim();
                 return value !== "Enter Value" ? sum + parseFloat(value) : sum;
             }, 0);
-        
-            console.log(totalDays); /////////////////////////////////////// this is the value of total days!!!!! palagyan nalang logic para maupdate sa front
+
             document.getElementById("totalDays").textContent = totalDays.toFixed(0); 
         });
     });
