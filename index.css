@@ -38,7 +38,7 @@ td {
 .button, 
 .hide-col1-container,
 .average-container,
-.average-output {
+.js-average{
     flex: 1;
     background-color: rgb(92, 98, 124);
     color: white;
@@ -55,7 +55,7 @@ td {
     border: 1px solid black;
 }
 
-.average-output {
+.js-average {
     background-color: white;
     border-radius: 0px;
     color: black;
