@@ -35,24 +35,36 @@ td {
     border-right: 1px solid black;
 }
 
-.button, .hide-col1-container {
+.button, 
+.hide-col1-container,
+.average-container,
+.average-output {
     flex: 1;
     background-color: rgb(92, 98, 124);
     color: white;
-    padding: 12pxpx;
+    padding: 12px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     margin-bottom: 6px;
     cursor: pointer;
     border-radius: 8px;
-    min-width: 120px;
+    max-width: 200px;
     width: 100%; /* Make the button occupy the full width of its parent */
     font-family: 'Courier New', Courier, monospace;
+    border: 1px solid black;
+}
+
+.average-output {
+    background-color: white;
+    border-radius: 0px;
+    color: black;
+    padding: 5px;
 }
 
 .button-container {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);    
+    align-items: end;
 }
 
 .grid-container {
