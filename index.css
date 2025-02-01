@@ -50,6 +50,10 @@ h1.title {
     border-radius: 12px;
 }
 
+.input-days {
+    width: 40px;
+}
+
 
 .th, td  {
     color: black;
@@ -72,6 +76,10 @@ td {
     border-top: 1px solid black;
     border-right: 1px solid black;
     padding: 4px;
+}
+
+.delete {
+    width: 70px;
 }
 
 .button,

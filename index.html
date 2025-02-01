@@ -16,12 +16,17 @@
             
             <div class="button-container">
                 <button class="button js-add-button">Add Row</button>
+                <div class="details-container">
+                    <label for="detail">No. of days: </label>
+                    <input type="number" id="days" class="input-days">
+                </div>
                 <button class="button js-simulate-button">Simulate</button>
                 <button class="button js-reset-button">Reset</button>
                 <div class="details-container">
                     <label for="detail">Detail</label>
                     <input type="checkbox" id="detail" class="js-detail-checkbox">
                 </div>
+                
                 
             </div>
             <div class="grid-table-container">
@@ -32,7 +37,7 @@
                             <th class="th">Detail</th>
                             <th class="th"># Days</th>
                             <th class="th"># Customers</th>
-                            <th class="th">Del</th>
+                            <th class="th delete">Delete</th>
                         </thead>
                         <tbody class="js-body">
                         </tbody>
@@ -74,7 +79,7 @@
                 </div>
                 <div class="table-bottom-container">
                     Average: 
-                    <span class="js-average average">0</span>
+                    <span id="customerAve"class="js-average average">0</span>
                 </div>
             </div>
                 
