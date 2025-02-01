@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         day = 1;
         randomNum = generateRandomNumber();
+        document.getElementById("customerAve").textContent = "0.00";
+        document.getElementById("totalDays").textContent = "0";
     });
 
     btnSimulate.addEventListener("click", function () {
@@ -70,7 +72,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!valid) {
             alert("Please enter a valid value for each cell.");
         } else {
-            simulate();
+            let daysInput = parseInt(document.getElementById("days").value);
+            document.querySelectorAll(".js-body")[2].innerHTML = "";
+            day = 1;
+            if (isNaN(daysInput) || daysInput <= 0) {
+                alert("Please enter a positive number for days.");
+                return;
+            } else { 
+                for (let i = 0; i < daysInput; i++) {
+                simulate();
+                }
+            }
         }
     });
 });
@@ -184,6 +196,17 @@ function generateRow() {
             }, 0);
         
             console.log(totalDays); /////////////////////////////////////// this is the value of total days!!!!! palagyan nalang logic para maupdate sa front
+            document.getElementById("totalDays").textContent = totalDays.toFixed(0); 
+        });
+    });
+
+    // Add onchange listener for table1 jsbody 0 cell2
+    document.querySelectorAll(".js-body")[0].querySelectorAll("td:nth-child(3)").forEach(cell => {
+        cell.addEventListener('input', function () {
+            updateTable();
+            // Clear the whole table3 (js-body2) when something changes
+            document.querySelectorAll(".js-body")[2].innerHTML = "";
+            day = 1;
         });
     });
 
@@ -211,11 +234,11 @@ function generateRow() {
             const rateFactor = parseFloat(rateFactorCell.textContent) || 0;
             const probability = totalRateFactor ? (rateFactor / totalRateFactor) : 0;
     
-            probCell.textContent = probability.toFixed(4);
+            probCell.textContent = probability.toFixed(2);
     
             // Update cumulative probability and range cells
             computedValue += probability;
-            cumProbCell.textContent = computedValue.toFixed(4);
+            cumProbCell.textContent = computedValue.toFixed(2);
     
             const rangeStart = previousRangeEnd;
             const rangeEnd = (computedValue * 100) - 1;

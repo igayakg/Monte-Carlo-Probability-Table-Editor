@@ -1,187 +1,179 @@
 body {
-    background-color: rgb(36, 36, 36);
-    margin: 0;
-    padding-top: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    font-family: 'Times New Roman', Times, serif;
-    justify-content: center;
-    align-items: center;
+  background-color: rgb(36, 36, 36);
+  margin: 0;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-family: "Times New Roman", Times, serif;
+  justify-content: center;
+  align-items: center;
 }
 
 .inner-container {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0px;
 }
 
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: rgb(117, 90, 122);
-    margin: 0 auto;
-    margin-bottom: 15px;
-    border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(117, 90, 122);
+  margin: 0 auto;
+  margin-bottom: 15px;
+  border-radius: 12px;
 }
 
 h1.title {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    font-size: 64px;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 7px;
-    color: rgb(0, 0, 0);
-    margin: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-size: 64px;
+  font-family: "Courier New", Courier, monospace;
+  padding: 7px;
+  color: rgb(0, 0, 0);
+  margin: 0;
 }
 
 .grid-container {
-    background-color: rgb(255, 255, 255);
-    display: grid;
-    grid-template-columns: 200px 1fr 1fr 1fr;
-    gap: 10px;
-    height: 500px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 12px;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 1fr;
+  gap: 10px;
+  height: 500px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
 }
 
 .input-days {
-    width: 40px;
+  width: 40px;
 }
 
-
-.th, td  {
-    color: black;
-    font-size: 16px;
+.th,
+td {
+  color: black;
+  font-size: 16px;
 }
 
 th {
-    padding: 6px;
-    background-color: rgb(117, 90, 122);
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    border-bottom: 1px solid black;
+  padding: 6px;
+  background-color: rgb(117, 90, 122);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid black;
 }
 
 td {
-    background-color: rgb(251, 243, 255);
-    height: 25px; /* Set a fixed height for the newly added row */
-    max-height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    padding: 4px;
+  background-color: rgb(251, 243, 255);
+  height: 25px; /* Set a fixed height for the newly added row */
+  max-height: 10px;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  padding: 4px;
 }
 
 .delete {
-    width: 70px;
+  width: 70px;
 }
 
 .button,
 .details-container {
-    width: 100%; /* Make the button occupy the full width of its parent */
-    transition: opacity 0.3s; /* Smooth transition for opacity change */
+  width: 100%; /* Make the button occupy the full width of its parent */
+  transition: opacity 0.3s; /* Smooth transition for opacity change */
 }
 
-.button, 
+.button,
 .details-container,
 .average-container,
-.js-average-container{
-    flex: 1;
-    background-color: rgb(92, 98, 124);
-    color: white;
-    padding: 12px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin-bottom: 6px;
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow: inset 0 0 30px 0 rgba(185, 53, 53, 0.2);
-    border: 1px solid black;
+.js-average-container {
+  flex: 1;
+  background-color: rgb(92, 98, 124);
+  color: white;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: inset 0 0 30px 0 rgba(185, 53, 53, 0.2);
+  border: 1px solid black;
 }
 
-
-.button:hover, 
+.button:hover,
 .details-container:hover,
 .average-container:hover,
 .js-average:hover {
-    opacity: 0.8; /* Set opacity to 60% on hover */
-    border: 1px solid black;
-    
+  opacity: 0.8; /* Set opacity to 60% on hover */
+  border: 1px solid black;
 }
-.details-container{
-    width: 100%;
-    box-sizing: border-box;
+.details-container {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .average,
 .total-days {
-    background-color: white;
-    border-radius: 0px;
-    color: black;
-    padding: 5px;
+  background-color: white;
+  border-radius: 0px;
+  color: black;
+  padding: 5px;
 }
 
 .button-container {
-    background-color: rgb(255, 255, 255); 
+  background-color: rgb(255, 255, 255);
 }
-
 
 .grid-table-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 9fr 1fr;
-    gap: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 9fr 1fr;
+  gap: 5px;
 }
 .table-container {
-    width: 100%;
-    height: 100%;
-    padding: 0px;
-    background-color: rgb(237, 235, 238);
-    border-radius: 10px;
-    border: 1px solid black;
-    overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  background-color: rgb(237, 235, 238);
+  border-radius: 10px;
+  border: 1px solid black;
+  overflow-y: auto;
 }
 
 .table-top-container,
 .table-bottom-container {
-    border-radius: 8px;
+  border-radius: 8px;
 }
 
 .table-top-container {
-    padding: 0px;
-    background-color: rgb(237, 235, 238);
-    border-radius: 10px;
-    border: 1px solid black;
-    overflow-y: auto;
-    max-height: 450px; /* Set a maximum height for the container */
+  padding: 0px;
+  background-color: rgb(237, 235, 238);
+  border-radius: 10px;
+  border: 1px solid black;
+  overflow-y: auto;
+  max-height: 450px; /* Set a maximum height for the container */
 }
 
-
 .table-bottom-container {
-    background-color: rgb(117, 90, 122);
-    color: white;
-    font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 14px;
-    border-radius: 8px;
-    text-align: end;
-    
+  background-color: rgb(117, 90, 122);
+  color: white;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  padding: 14px;
+  border-radius: 8px;
+  text-align: end;
 }
 
 #table1,
 #table2,
 #table3 {
-    width: 100%;
-    table-layout: fixed;
-    border-spacing: 0;;
-    
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 0;
 }
-
-
