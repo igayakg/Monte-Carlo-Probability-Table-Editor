@@ -7,66 +7,82 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="header">
-        <h1 class="title"> Monte Carlo </h1>
-    </div>
-    
-    <div class="grid-container">
-        <div class="button-container">
-            <button class="button js-add-button">Add Row</button>
-
-            <div class="hide-col1-container">
-                <label for="detail">Detail</label>
-                <input type="checkbox" id="detail" class="js-detail-checkbox">
-            </div>
-            <div class="hide-col1-container">
-                Average: 
-                <span class="js-average" id="customerAve">0</span>
-            </div>
-            <button class="button js-simulate-button">Simulate</button>
-            <button class="button js-reset-button">Reset</button>
-            
-        </div>
-        <div class="table-container">
-            <table id="table1">
-                <thead>
-                    <th class="th">Detail</th>
-                    <th class="th"># Days</th>
-                    <th class="th"># Customers</th>
-                    <th class="th">Del</th>
-                </thead>
-                <tbody class="js-body">
-                        <!-- THE ADDED ROWS -->
-                </tbody>
-            </table>
-        </div>
-        <div class="table-container">
-            <table id="table2">
-                <thead>
-                    <th class="th">Probability</th>
-                    <th class="th">Cumulative</th>
-                    <th class="th">RNI</th>
-                </thead>
-                <tbody class="js-body">
-                        <!-- THE ADDED ROWS -->
-                </tbody>
-            </table>
-        </div>
-        <div class="table-container">
-            <table id="table3">
-                <thead>
-                    
-                    <th class="th">Day</th>
-                    <th class="th">Random</th>
-                    <th class="th">Customers</th>
-                </thead>
-                <tbody class="js-body">
-                        <!-- THE ADDED ROWS -->
-                </tbody>
-            </table>
+    <div class="inner-container">
+        <div class="header">
+            <h1 class="title"> Monte Carlo Simulation </h1>
         </div>
         
+        <div class="grid-container">
+            
+            <div class="button-container">
+                <button class="button js-add-button">Add Row</button>
+                <button class="button js-simulate-button">Simulate</button>
+                <button class="button js-reset-button">Reset</button>
+                <div class="details-container">
+                    <label for="detail">Detail</label>
+                    <input type="checkbox" id="detail" class="js-detail-checkbox">
+                </div>
+                
+            </div>
+            <div class="grid-table-container">
+                <div class="table-top-container">
+    
+                    <table id="table1">
+                        <thead>
+                            <th class="th">Detail</th>
+                            <th class="th"># Days</th>
+                            <th class="th"># Customers</th>
+                            <th class="th">Del</th>
+                        </thead>
+                        <tbody class="js-body">
+                        </tbody>
+                    </table>
+    
+    
+                </div> 
+                <div class="table-bottom-container">
+                    Total Days: 
+                    <span class="total-days">0</span>
+                </div>
+            </div>
+                
+                
+            <div class="table-container">
+                <table id="table2">
+                    <thead>
+                        <th class="th">Probability</th>
+                        <th class="th">Cumulative</th>
+                        <th class="th">RNI</th>
+                    </thead>
+                    <tbody class="js-body">
+                    </tbody>
+                </table>         
+            </div>
+
+            <div class="grid-table-container">
+                <div class="table-top-container">
+                    <table id="table3">
+                        <thead>
+                            
+                            <th class="th">Day</th>
+                            <th class="th">Random</th>
+                            <th class="th">Customers</th>
+                        </thead>
+                        <tbody class="js-body">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-bottom-container">
+                    Average: 
+                    <span class="js-average average">0</span>
+                </div>
+            </div>
+                
+            
+        </div>
+
     </div>
+    
     <script src="newindex.js"></script>
 </body>
 </html>
