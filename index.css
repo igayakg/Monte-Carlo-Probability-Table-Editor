@@ -1,44 +1,89 @@
 body {
-    background-color: rgb(246, 247, 220);
+    background-color: rgb(36, 36, 36);
     margin: 0;
-    padding: 20px;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
     font-family: 'Times New Roman', Times, serif;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+}
+
+.inner-container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(117, 90, 122);
+    margin: 0 auto;
+    margin-bottom: 15px;
+    border-radius: 12px;
 }
 
 h1.title {
+    display: flex;
+    align-items: center;
     text-align: center;
+    justify-content: center;
     font-size: 64px;
     font-family: 'Courier New', Courier, monospace;
-    padding: 0px;
-    margin-top: 20px;
-    margin-bottom: 0px;
+    padding: 7px;
+    color: rgb(0, 0, 0);
+    margin: 0;
 }
 
-.th, td {
-    padding: 4px;
+.grid-container {
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    gap: 10px;
+    height: 500px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+
+.th, td  {
     color: black;
     font-size: 16px;
 }
 
 th {
-    background-color: rgb(114, 131, 208);;
+    padding: 6px;
+    background-color: rgb(117, 90, 122);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 1px solid black;
 }
 
 td {
-    background-color: rgb(221, 224, 240);
+    background-color: rgb(251, 243, 255);
     height: 25px; /* Set a fixed height for the newly added row */
     max-height: 10px;
     border-top: 1px solid black;
     border-right: 1px solid black;
+    padding: 4px;
+}
+
+.button,
+.details-container {
+    width: 100%; /* Make the button occupy the full width of its parent */
+    transition: opacity 0.3s; /* Smooth transition for opacity change */
 }
 
 .button, 
-.hide-col1-container,
+.details-container,
 .average-container,
-.js-average{
+.js-average-container{
     flex: 1;
     background-color: rgb(92, 98, 124);
     color: white;
@@ -49,16 +94,26 @@ td {
     margin-bottom: 6px;
     cursor: pointer;
     border-radius: 8px;
-    width: 100%; /* Make the button occupy the full width of its parent */
-    font-family: 'Courier New', Courier, monospace;
+    box-shadow: inset 0 0 30px 0 rgba(185, 53, 53, 0.2);
     border: 1px solid black;
 }
-.hide-col1-container{
+
+
+.button:hover, 
+.details-container:hover,
+.average-container:hover,
+.js-average:hover {
+    opacity: 0.8; /* Set opacity to 60% on hover */
+    border: 1px solid black;
+    
+}
+.details-container{
     width: 100%;
     box-sizing: border-box;
 }
 
-.js-average {
+.average,
+.total-days {
     background-color: white;
     border-radius: 0px;
     color: black;
@@ -69,28 +124,47 @@ td {
     background-color: rgb(255, 255, 255); 
 }
 
-.grid-container {
-    background-color: rgb(255, 255, 255);
-    
-    display: grid;
-    grid-template-columns: 200px 1fr 1fr 1fr;
-    gap: 10px;
 
-    height: 500px;
-    max-width: 1600px;
-    padding: 20px;
-    margin: auto;
-    text-align: center;
-    border-radius: 12px;
+.grid-table-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 9fr 1fr;
+    gap: 5px;
+}
+.table-container {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    background-color: rgb(237, 235, 238);
+    border-radius: 10px;
+    border: 1px solid black;
+    overflow-y: auto;
 }
 
-.table-container {
+.table-top-container,
+.table-bottom-container {
+    border-radius: 8px;
+}
+
+.table-top-container {
     padding: 0px;
-    height: 100%;
-    background-color: rgb(253, 249, 255);
-    overflow-y: auto;
-    border-radius: 12px;
+    background-color: rgb(237, 235, 238);
+    border-radius: 10px;
     border: 1px solid black;
+    overflow-y: auto;
+    max-height: 450px; /* Set a maximum height for the container */
+}
+
+
+.table-bottom-container {
+    background-color: rgb(117, 90, 122);
+    color: white;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: end;
+    
 }
 
 #table1,
@@ -98,43 +172,8 @@ td {
 #table3 {
     width: 100%;
     table-layout: fixed;
-    border-spacing: 0;
+    border-spacing: 0;;
     
 }
 
-@media screen and (max-width: 768px) {
-    #h1 {
-        font-size: 1.8em;
-    }
 
-    .th, td {
-        font-size: 1.2em;
-        padding: 10px;
-    }
-
-    #table1 {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    #btnTable {
-        margin: 0;
-        align-items: center; /* Center buttons on small screens */
-    }
-
-    .btn {
-        width: 100%; /* Buttons take full width on mobile */
-    }
-}
-
-/* Media Query for very small screens */
-@media screen and (max-width: 480px) {
-    #h1 {
-        font-size: 1.5em;
-    }
-
-    .th, td {
-        font-size: 1em;
-        padding: 8px;
-    }
-}
