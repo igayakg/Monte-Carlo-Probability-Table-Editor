@@ -49,10 +49,13 @@ td {
     margin-bottom: 6px;
     cursor: pointer;
     border-radius: 8px;
-    max-width: 200px;
     width: 100%; /* Make the button occupy the full width of its parent */
     font-family: 'Courier New', Courier, monospace;
     border: 1px solid black;
+}
+.hide-col1-container{
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .js-average {
@@ -63,20 +66,19 @@ td {
 }
 
 .button-container {
-    background-color: rgb(255, 255, 255);    
-    align-items: end;
+    background-color: rgb(255, 255, 255); 
 }
 
 .grid-container {
     background-color: rgb(255, 255, 255);
     
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 200px 1fr 1fr 1fr;
     gap: 10px;
 
     height: 500px;
-    max-width: 1100px;
-    padding: 50px;
+    max-width: 1600px;
+    padding: 20px;
     margin: auto;
     text-align: center;
     border-radius: 12px;
@@ -91,7 +93,9 @@ td {
     border: 1px solid black;
 }
 
-#table1 {
+#table1,
+#table2,
+#table3 {
     width: 100%;
     table-layout: fixed;
     border-spacing: 0;
